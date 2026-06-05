@@ -4,7 +4,7 @@ gitops-manifests
 Kubernetes manifests demonstrating a secure GitOps deployment workflow with Argo CD.
 
 This repository is the single source of truth for the desired state of a Kubernetes cluster. Whatever is described here, Argo CD automatically reconciles into the live cluster — no manual kubectl apply, no undocumented changes.
-It was built as part of a Bachelor's thesis in cybersecurity (specialty 125, Igor Sikorsky Kyiv Polytechnic Institute) on secure web-application deployment in Kubernetes, and is shared publicly as a hands-on reference for anyone learning GitOps.
+
 Why GitOps?
 Traditional deployment relies on a push model: an external CI system pushes changes into the cluster and therefore has to store the cluster's credentials. This creates three problems:
 
@@ -78,6 +78,8 @@ Self-healing — protects against unauthorized direct changes (configuration dri
 Further reading
 
 Argo CD Documentation
+
 OpenGitOps — GitOps Principles
+
 OWASP Kubernetes Top 10
 
