@@ -2,9 +2,6 @@
 gitops-manifests
 
 Kubernetes manifests demonstrating a secure GitOps deployment workflow with Argo CD.
-Show Image
-Show Image
-Show Image
 
 This repository is the single source of truth for the desired state of a Kubernetes cluster. Whatever is described here, Argo CD automatically reconciles into the live cluster — no manual kubectl apply, no undocumented changes.
 It was built as part of a Bachelor's thesis in cybersecurity (specialty 125, Igor Sikorsky Kyiv Polytechnic Institute) on secure web-application deployment in Kubernetes, and is shared publicly as a hands-on reference for anyone learning GitOps.
@@ -17,22 +14,7 @@ Larger attack surface — cluster credentials live in an external system that ca
 
 GitOps flips this around with a pull model. An in-cluster agent (Argo CD) pulls the desired state from Git, so credentials never leave the cluster, every change is a Git commit with an author and timestamp, and the live state is continuously verified against the repository.
 How it works
-┌──────────────┐     git push      ┌──────────────────┐
-│  Developer   │ ────────────────► │  Git repository  │
-└──────────────┘                   │ (this repo, main)│
-                                   └────────┬─────────┘
-                                            │ Argo CD pulls (watches)
-                                            ▼
-                                   ┌──────────────────┐
-                                   │  Argo CD agent   │
-                                   │  (in-cluster)    │
-                                   └────────┬─────────┘
-                                            │ reconciles desired = actual
-                                            ▼
-                                   ┌──────────────────┐
-                                   │ Kubernetes state │
-                                   │   (production)   │
-                                   └──────────────────┘
+<img width="848" height="461" alt="{05618ED6-0B19-4DD5-A540-61B9989C992D}" src="https://github.com/user-attachments/assets/3545763a-b191-4a0b-9985-6fd27ec73382" />
 
 You edit a manifest and commit it to main.
 Argo CD detects the new commit and syncs the cluster (Auto-Sync).
